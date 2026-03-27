@@ -48,10 +48,10 @@ const HeroSection = () => (
 
         <div className="flex flex-wrap gap-4 mt-2">
           <Button size="lg" asChild className="font-play font-bold bg-primary text-primary-foreground hover:bg-primary/90 gap-2 px-6 shadow-[0_0_20px_hsl(var(--primary)/0.3)] cursor-pointer">
-            <a href="#contact">Get Started <ArrowRight size={18} /></a>
+            <a href="/product" >Get Started <ArrowRight size={18} /></a>
           </Button>
           <Button size="lg" variant="outline" asChild className="font-inter gap-2 border-border text-foreground hover:bg-secondary cursor-pointer">
-            <a href="#contact"><Play size={16} /> Request Demo</a>
+            <a href="/product"><Play size={16} /> Learn More</a>
           </Button>
         </div>
 

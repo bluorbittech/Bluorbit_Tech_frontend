@@ -15,11 +15,17 @@ const Navbar = () => {
       className="fixed top-0 left-0 right-0 z-50 glass-card border-t-0 border-x-0 rounded-none"
     >
       <div className="container mx-auto flex items-center justify-between h-28 px-4">
-        <a href="#" className="flex items-center gap-2 text-foreground font-bold text-xl">
+        <a href="/" className="flex items-center gap-2 text-foreground font-bold text-xl">
           <img src="/images/logo.svg" alt="BluOrbit Go Logo" className="h-24 w-auto object-contain" />
         </a>
 
         <div className="hidden md:flex items-center gap-8">
+          <a
+            href="/product"
+            className="text-muted-foreground hover:text-foreground transition-colors text-sm font-medium"
+          >
+            Product
+          </a>
           {navLinks.map((link) => (
             <a
               key={link}
@@ -33,7 +39,7 @@ const Navbar = () => {
 
         <div className="hidden md:flex items-center gap-3">
           <Button size="sm" asChild className="bg-primary text-primary-foreground hover:bg-primary/90 cursor-pointer">
-            <a href="#contact">Get Started</a>
+            <a href="/product">Get Started</a>
           </Button>
         </div>
 
@@ -51,6 +57,13 @@ const Navbar = () => {
             className="md:hidden overflow-hidden glass-card border-t border-border"
           >
             <div className="flex flex-col gap-4 p-4">
+              <a
+                href="/product"
+                className="text-muted-foreground hover:text-foreground transition-colors"
+                onClick={() => setOpen(false)}
+              >
+                Product
+              </a>
               {navLinks.map((link) => (
                 <a
                   key={link}
@@ -62,7 +75,7 @@ const Navbar = () => {
                 </a>
               ))}
               <Button asChild className="bg-primary text-primary-foreground w-full cursor-pointer">
-                <a href="#contact" onClick={() => setOpen(false)}>Get Started</a>
+                <a href="/product" onClick={() => setOpen(false)}>Get Started</a>
               </Button>
             </div>
           </motion.div>
