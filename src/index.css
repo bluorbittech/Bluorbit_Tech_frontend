@@ -1,0 +1,202 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Lilita+One&family=Cinzel:wght@400;600;700&family=Marcellus&family=Play:wght@400;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 218 55% 8%;
+    --foreground: 0 0% 98%;
+
+    --card: 218 50% 11%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 218 50% 11%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 214 100% 60%;
+    --primary-foreground: 218 55% 8%;
+
+    --secondary: 218 45% 16%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 218 35% 18%;
+    --muted-foreground: 214 25% 62%;
+
+    --accent: 0 0% 100%;
+    --accent-foreground: 218 55% 8%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 218 35% 20%;
+    --input: 218 35% 20%;
+    --ring: 214 100% 60%;
+
+    --radius: 0.75rem;
+
+    --glow-primary: 214 100% 60%;
+    --glow-accent: 0 0% 100%;
+    --glow-blue: 214 100% 70%;
+
+    --sidebar-background: 218 55% 8%;
+    --sidebar-foreground: 0 0% 98%;
+    --sidebar-primary: 214 100% 60%;
+    --sidebar-primary-foreground: 218 55% 8%;
+    --sidebar-accent: 218 45% 16%;
+    --sidebar-accent-foreground: 0 0% 98%;
+    --sidebar-border: 218 35% 20%;
+    --sidebar-ring: 214 100% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  .section-dark {
+    background-color: #0B1120;
+  }
+
+  .section-light {
+    background-color: #F9FAFB;
+  }
+
+  /* Light section overrides */
+  .section-light .label-text {
+    @apply text-blue-600;
+  }
+  .section-light .heading-text {
+    @apply text-gray-900;
+  }
+  .section-light .body-text {
+    @apply text-gray-500;
+  }
+  .section-light .muted-text {
+    @apply text-gray-400;
+  }
+
+  .light-card {
+    @apply bg-white border border-gray-100 rounded-xl shadow-[0_2px_16px_rgba(0,0,0,0.06)] transition-all duration-300;
+  }
+  .light-card:hover {
+    @apply shadow-[0_4px_28px_rgba(59,130,246,0.12)] border-blue-100;
+  }
+
+  .glass-card {
+    @apply bg-white/[0.05] backdrop-blur-2xl border border-white/[0.09] rounded-xl shadow-[inset_0_1px_0_rgba(255,255,255,0.10)];
+  }
+
+  .glow-border {
+    @apply border border-primary/50 shadow-[0_0_20px_hsl(var(--primary)/0.3),inset_0_0_20px_hsl(var(--primary)/0.06)];
+  }
+
+  .glow-border-accent {
+    @apply border border-white/40 shadow-[0_0_20px_rgba(255,255,255,0.15),inset_0_0_20px_rgba(255,255,255,0.04)];
+  }
+
+  .glow-border-highlight {
+    @apply border border-primary/70 shadow-[0_0_40px_hsl(var(--primary)/0.45),0_0_80px_hsl(var(--primary)/0.2),inset_0_0_30px_hsl(var(--primary)/0.1)];
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-blue-400 via-blue-300 to-white bg-clip-text text-transparent;
+  }
+
+  .gradient-text-light {
+    @apply bg-gradient-to-r from-blue-600 to-blue-400 bg-clip-text text-transparent;
+  }
+
+  .gradient-text-purple {
+    @apply bg-gradient-to-r from-primary via-white to-primary bg-clip-text text-transparent;
+  }
+
+  .section-padding {
+    @apply py-20 md:py-28 px-4 md:px-8;
+  }
+
+  .hover-glow {
+    @apply transition-all duration-300 hover:shadow-[0_0_35px_hsl(var(--primary)/0.35),inset_0_0_20px_hsl(var(--primary)/0.06)] hover:border-primary/60;
+  }
+
+  /* Smooth section transitions */
+  .section-dark,
+  .section-light {
+    position: relative;
+  }
+
+  /* Dark → fades out at bottom toward light */
+  .section-dark::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 120px;
+    background: linear-gradient(to bottom, transparent, rgba(249,250,251,0.06));
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* Light → fades out at bottom toward dark */
+  .section-light::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 120px;
+    background: linear-gradient(to bottom, transparent, rgba(11,17,32,0.06));
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* Dark → fades in at top from light */
+  .section-dark::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 120px;
+    background: linear-gradient(to top, transparent, rgba(249,250,251,0.05));
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* Light → fades in at top from dark */
+  .section-light::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 120px;
+    background: linear-gradient(to top, transparent, rgba(11,17,32,0.05));
+    pointer-events: none;
+    z-index: 1;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .font-lilita  { font-family: 'Lilita One', cursive; }
+  .font-cinzel  { font-family: 'Cinzel', serif; }
+  .font-marcellus { font-family: 'Marcellus', serif; }
+  .font-play    { font-family: 'Play', sans-serif; }
+  .font-inter   { font-family: 'Inter', sans-serif; }
+}
